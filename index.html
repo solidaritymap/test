@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>한국옵티칼하이테크</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    function copyAccount() {
+      const account = "농협 352-2181-2690-43"; // ← 여기에 본인 계좌번호 입력
+      navigator.clipboard.writeText(account)
+        .then(() => alert("계좌번호가 복사되었습니다!"))
+        .catch(err => alert("복사 실패: " + err));
+    }
+
+    function openApp(url) {
+      window.location.href = url;
+    }
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    .account-btn {
+      width: 90%;
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .account-btn:hover {
+      background-color: #0056b3;
+    }
+    .bank-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      justify-items: center;
+      margin-top: 30px;
+      padding: 0 10px;
+    }
+    .bank-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 90px;
+    }
+    .bank-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      background: white;
+      transition: transform 0.2s;
+    }
+    .bank-item img:hover {
+      transform: scale(1.1);
+    }
+    .bank-name {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #333;
+    }
+    @media (max-width: 400px) {
+      .bank-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>한국 옵티칼 하이테크</h1>
+
+  <!-- 계좌번호 복사 버튼 -->
+  <button class="account-btn" onclick="copyAccount()">계좌번호 복사</button>
+
+  <div class="bank-container">
+    <!-- 토스뱅크 -->
+    <div class="bank-item" onclick="openApp('supertoss://')">
+      <img src="https://play-lh.googleusercontent.com/Yoaqip2U7E9EKghfvnZW1OeanfbjaL3Qqn5TGVDYAqkbXsL3TDNyEp_oBPH5vAPro38=w480-h960-rw" alt="토스뱅크">
+      <div class="bank-name">토스뱅크</div>
+    </div>
+
+    <!-- 국민은행 -->
+    <div class="bank-item" onclick="openApp('kbbank://')">
+      <img src="https://play-lh.googleusercontent.com/K1rBzVJjq9qtSxC2vkWIsp3GPtPOCwLPf1aCJ0tL0TvWdNcAKQKhYwjPMY90XJwyW-E=w480-h960-rw" alt="국민은행">
+      <div class="bank-name">국민은행</div>
+    </div>
+
+    <!-- 농협은행 -->
+    <div class="bank-item" onclick="openApp('nhbank://')">
+      <img src="https://play-lh.googleusercontent.com/dcSpNj4GuqdXd7lpMuZj2q6Nxr3g_juX9_qKvuzB5X-ud4dT09GYjqUKJTdLd1g2r8c=w480-h960-rw" alt="농협은행">
+      <div class="bank-name">농협은행</div>
+    </div>
+
+    <!-- 신한은행 -->
+    <div class="bank-item" onclick="openApp('shinhan-sr-ansimclick://')">
+      <img src="https://play-lh.googleusercontent.com/s34uZDYvN_qe-tioQoDgdLGOq3y15vC2oSFhhhO60yVe1QVBfINgVCpbmrm_UoQSLMg=w480-h960-rw" alt="신한은행">
+      <div class="bank-name">신한은행</div>
+    </div>
+
+    <!-- 하나은행 -->
+    <div class="bank-item" onclick="openApp('hana1qpay://')">
+      <img src="https://play-lh.googleusercontent.com/8QnCb29NHMV5S9CmXTyCLj80-1XYVl6fLjwvau7PDEQTLTIcP7SwS9w1FAE_fM08cg=w480-h960-rw" alt="하나은행">
+      <div class="bank-name">하나은행</div>
+    </div>
+
+    <!-- 우리은행 -->
+    <div class="bank-item" onclick="openApp('NewSmartPib://')">
+      <img src="https://play-lh.googleusercontent.com/X0F73sNd54RPhUJCMlRAINxhGKxw18jkBgw4E5F6dIs_7pL5Geg0xWt5taQwisw47ok=w480-h960-rw" alt="우리은행">
+      <div class="bank-name">우리은행</div>
+    </div>
+
+    <!-- 카카오뱅크 -->
+    <div class="bank-item" onclick="openApp('kakaobank://')">
+      <img src="https://play-lh.googleusercontent.com/6Z_MeUWUyXUmnE57yjYNKQdGvYHk_P8akfoZn0JZNZvsHAqtYFm4bi90m568nYgnqA=w480-h960-rw" alt="카카오뱅크">
+      <div class="bank-name">카카오뱅크</div>
+    </div>
+  </div>
+</body>
+</html>
