@@ -1,135 +1,231 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>한국옵티칼하이테크</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    function copyAccount() {
-      const account = "농협 352-2181-2690-43"; // ← 여기에 본인 계좌번호 입력
-      navigator.clipboard.writeText(account)
-        .then(() => alert("계좌번호가 복사되었습니다!"))
-        .catch(err => alert("복사 실패: " + err));
-    }
-
-    function openApp(url) {
-      window.location.href = url;
-    }
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>현대차 규탄 트윗 & 항의전화</title>
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
+      margin: 0;
       padding: 20px;
+      font-family: 'Pretendard', sans-serif, Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
     }
     h1 {
-      margin-bottom: 20px;
-      font-size: 24px;
+      font-size: 22px;
+      margin-bottom: 30px;
     }
-    .account-btn {
+    .sub-title {
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    button {
       width: 90%;
       max-width: 400px;
-      margin: 20px auto;
-      padding: 15px;
-      font-size: 18px;
-      background-color: #007bff;
-      color: white;
+      padding: 14px;
+      margin: 10px 0;
+      font-size: 16px;
       border: none;
       border-radius: 8px;
+      background-color: #0a84ff;
+      color: white;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
-    .account-btn:hover {
-      background-color: #0056b3;
+    button:hover {
+      background-color: #0066cc;
     }
-    .bank-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      justify-items: center;
-      margin-top: 30px;
-      padding: 0 10px;
+    textarea#protestContent {
+      width: 90%;
+      max-width: 400px;
+      height: 180px;
+      font-size: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 15px;
+      resize: none;
+      text-align: left;
     }
-    .bank-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      width: 90px;
+    .section {
+      margin-top: 50px;
     }
-    .bank-item img {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      border-radius: 12px;
-      border: 1px solid #ddd;
-      padding: 10px;
-      background: white;
-      transition: transform 0.2s;
-    }
-    .bank-item img:hover {
-      transform: scale(1.1);
-    }
-    .bank-name {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #333;
-    }
-    @media (max-width: 400px) {
-      .bank-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
+
 <body>
-  <h1>한국 옵티칼 하이테크</h1>
+  <h1>🛑 현대차 규탄 트윗 & 항의전화</h1>
 
-  <!-- 계좌번호 복사 버튼 -->
-  <button class="account-btn" onclick="copyAccount()">계좌번호 복사</button>
+  <div class="sub-title">✏️ 답글&인용 문구</div>
+  <button onclick="copyReplyText()">📋 답글 문구 복사하고 트윗 열기</button>
 
-  <div class="bank-container">
-    <!-- 토스뱅크 -->
-    <div class="bank-item" onclick="openApp('supertoss://')">
-      <img src="https://play-lh.googleusercontent.com/Yoaqip2U7E9EKghfvnZW1OeanfbjaL3Qqn5TGVDYAqkbXsL3TDNyEp_oBPH5vAPro38=w480-h960-rw" alt="토스뱅크">
-      <div class="bank-name">토스뱅크</div>
-    </div>
-
-    <!-- 국민은행 -->
-    <div class="bank-item" onclick="openApp('kbbank://')">
-      <img src="https://play-lh.googleusercontent.com/K1rBzVJjq9qtSxC2vkWIsp3GPtPOCwLPf1aCJ0tL0TvWdNcAKQKhYwjPMY90XJwyW-E=w480-h960-rw" alt="국민은행">
-      <div class="bank-name">국민은행</div>
-    </div>
-
-    <!-- 농협은행 -->
-    <div class="bank-item" onclick="openApp('nhbank://')">
-      <img src="https://play-lh.googleusercontent.com/dcSpNj4GuqdXd7lpMuZj2q6Nxr3g_juX9_qKvuzB5X-ud4dT09GYjqUKJTdLd1g2r8c=w480-h960-rw" alt="농협은행">
-      <div class="bank-name">농협은행</div>
-    </div>
-
-    <!-- 신한은행 -->
-    <div class="bank-item" onclick="openApp('shinhan-sr-ansimclick://')">
-      <img src="https://play-lh.googleusercontent.com/s34uZDYvN_qe-tioQoDgdLGOq3y15vC2oSFhhhO60yVe1QVBfINgVCpbmrm_UoQSLMg=w480-h960-rw" alt="신한은행">
-      <div class="bank-name">신한은행</div>
-    </div>
-
-    <!-- 하나은행 -->
-    <div class="bank-item" onclick="openApp('hanawalletmembers://')">
-      <img src="https://play-lh.googleusercontent.com/8QnCb29NHMV5S9CmXTyCLj80-1XYVl6fLjwvau7PDEQTLTIcP7SwS9w1FAE_fM08cg=w480-h960-rw" alt="하나은행">
-      <div class="bank-name">하나은행</div>
-    </div>
-
-    <!-- 우리은행 -->
-    <div class="bank-item" onclick="openApp('NewSmartPib://')">
-      <img src="https://play-lh.googleusercontent.com/X0F73sNd54RPhUJCMlRAINxhGKxw18jkBgw4E5F6dIs_7pL5Geg0xWt5taQwisw47ok=w480-h960-rw" alt="우리은행">
-      <div class="bank-name">우리은행</div>
-    </div>
-
-    <!-- 카카오뱅크 -->
-    <div class="bank-item" onclick="openApp('kakaobank://')">
-      <img src="https://play-lh.googleusercontent.com/6Z_MeUWUyXUmnE57yjYNKQdGvYHk_P8akfoZn0JZNZvsHAqtYFm4bi90m568nYgnqA=w480-h960-rw" alt="카카오뱅크">
-      <div class="bank-name">카카오뱅크</div>
-    </div>
+  <div class="section">
+    <h2>📞 홍보실에 항의 전화 걸기</h2>
+    <p>전화 버튼을 누르면 전화 앱이 열립니다.</p>
+    <a href="tel:+82806006000">
+      <button>📞 홍보실에 전화 걸기</button>
+    </a>
+    <textarea id="protestContent" readonly placeholder="항의 내용을 여기에 복사해서 사용하세요."></textarea>
   </div>
+
+  <script>
+    // 🛑 한국어 트윗 링크 배열 (직접 추가)
+    const tweets_ko = [
+      // "https://x.com/....",
+      "https://x.com/hmg_talk/status/1913117041961422962?s=46",
+      "https://x.com/hmg_talk/status/1913100472216637739?s=46",
+      "https://x.com/hmg_talk/status/1913099680688361867?s=46",
+      "https://x.com/hmg_talk/status/1913046929589551599?s=46",
+      "https://x.com/hmg_talk/status/1912748662272471430?s=46",
+      "https://x.com/hmg_talk/status/1912690775349203034?s=46",
+      "https://x.com/hyundai_kor/status/1914121963842519167",
+      "https://x.com/hyundai_kor/status/1913397138605879718"
+    ];
+
+    // 🛑 한국어 답글 문구 배열 (직접 추가)
+    const replyTexts_ko = [
+      // "한국어 답글 예시",
+      "2025년 4월 19일, 현대차 울산공장 앞에서 평화적으로 시위하던 노동자와 시민들이 구사대와 경찰에 의해 폭력적으로 진압당한 사건을 강력히 규탄합니다. 현대차는 폭력 사태의 책임을 인정하고 피해자들에게 사과와 보상을 즉각 약속해야 합니다. 재발 방지 대책도 명확히 제시하십시오.",
+      "현대차는 울산공장 앞 평화 집회에 대해 구사대와 경찰을 동원하여 무력 진압을 감행했습니다. 이는 명백한 인권 침해이며, 노동권 탄압입니다. 현대차는 모든 폭력 사태에 대해 공식 사과하고, 책임자들을 엄중히 처벌하며 피해자 지원 방안을 조속히 시행해야 합니다. 은폐 시도는 규탄받을 것입니다.",
+      "구사대와 경찰이 평화롭게 시위하던 노동자들을 집단 폭행하는 동안 현대차는 방조자이자 가해자로서 침묵했습니다. 기업으로서 최소한의 사회적 책임도 지키지 않은 현대차는 즉각 사과하고, 폭력 사건에 연루된 모든 관계자를 엄정히 처벌하며, 재발 방지를 위한 제도적 장치를 마련해야 합니다.",
+      "2025년 4월 19일 집회 현장에서 현대차 구사대와 경찰이 함께 노동자들을 집단 폭행한 사건은 노동 존엄성을 짓밟은 심각한 인권 탄압입니다. 현대차는 피해자들에게 즉각 사과하고 구체적 보상 절차를 마련해야 합니다. 재발 방지 대책 없이 이 사건을 덮으려 해서는 안 됩니다.",
+      "현대차 구사대와 경찰의 합동 폭력은 국제사회가 규탄할 수준의 인권 유린이며, 평화 집회를 폭력으로 짓밟은 책임을 현대차는 전면적으로 인정해야 합니다. 피해자 사과, 가해자 처벌, 보상, 재발 방지 약속까지 전 과정을 투명하게 공개하고 이행할 것을 촉구합니다.",
+      "2025년 4월 19일 현대차 울산공장 앞에서 발생한 폭력 진압은 단순한 사건이 아니라 노동자와 시민의 기본권을 짓밟은 심각한 범죄입니다. 현대차는 즉각 피해자들에게 사과하고, 구체적인 보상과 가해자 처벌을 시행해야 하며, 향후 모든 노동권 침해를 중단할 것을 요구합니다.",
+      "구사대와 경찰을 동원하여 시민들을 폭력으로 제압한 현대차는 이번 사태에 대한 전적인 책임을 져야 합니다. 단순한 사과로 끝낼 문제가 아닙니다. 피해자 보상, 가해자 징계, 재발 방지 대책을 신속히 마련하고, 노동자와 시민을 존중하는 정책 변화를 약속해야 합니다.",
+      "평화로운 집회를 폭력적으로 짓밟은 현대차의 구사대와 경찰의 행위는 명백한 반인권 범죄입니다. 현대차는 폭력을 부정하거나 은폐하려 하지 말고, 책임을 인정하여 피해자들에게 사과하고, 모든 관계자를 엄중히 처벌하며, 사태 재발을 막기 위한 조치를 즉각 시행해야 합니다.",
+      "2025년 4월 19일, 현대차 울산공장 앞 집회 현장에서 발생한 구사대와 경찰의 폭력은 결코 우발적이거나 일회적 사건이 아닙니다. 현대차는 조직적으로 노동자와 시민을 탄압한 책임을 피할 수 없습니다. 즉각적인 사과와 재발 방지 대책, 피해자 지원을 촉구합니다.",
+      "현대차는 울산공장 앞 집회 폭력 사건에 대해 피해자들에게 사과하고, 가해자를 징계하며, 노동자와 시민이 안전하게 표현할 권리를 존중하는 구체적 조치를 즉각 시행해야 합니다. 이번 사태는 기업의 사회적 책임을 심각히 훼손한 사례로 기억될 것입니다.",
+      "평화 집회를 폭력으로 진압한 현대차는 더 이상 침묵할 수 없습니다. 구사대와 경찰을 통한 집단 폭력에 대해 전적인 책임을 지고, 피해자 보상과 가해자 처벌, 재발 방지 대책을 명확히 약속하십시오. 투명한 진상 조사 없이는 시민 신뢰를 회복할 수 없습니다.",
+      "구사대와 경찰의 무차별 폭력에 대해 현대차가 보여준 무책임한 태도는 시민사회 전체를 분노케 했습니다. 현대차는 노동자와 시민에게 진심 어린 사과를 표명하고, 책임자 처벌과 피해자 보상, 그리고 재발 방지를 위한 구체적 계획을 조속히 공개해야 할 것입니다.",
+      "현대차는 노동자와 시민을 상대로 한 폭력 동원의 책임을 무겁게 받아들여야 합니다. 피해자들에게 사과하고, 구체적인 보상 방안을 마련하며, 모든 관련자에 대한 엄정한 징계와 함께 향후 노동권·시민권 보장을 위한 정책적 약속을 공식화할 것을 요구합니다.",
+      "2025년 4월 19일 현대차 울산공장 앞 집회에서 발생한 폭력 사태는 현대차의 조직적 노동 탄압을 보여주는 단면입니다. 현대차는 피해자들에게 공식 사과하고, 보상 방안을 제시하며, 모든 가해자에 대해 책임을 묻는 절차를 즉각 시행해야 합니다.",
+      "현대차 구사대와 경찰의 집단 폭력 사태는 우리 사회가 결코 외면해서는 안 될 심각한 인권 침해입니다. 현대차는 이 사태를 개인 책임으로 떠넘기지 말고, 회사 차원의 공식 사과와 피해자 지원, 그리고 모든 가해자에 대한 엄중한 징계를 약속해야 합니다.",
+      "구사대와 경찰을 통한 집단 폭력은 현대차의 조직적 노동 탄압 행위입니다. 현대차는 이에 대해 피해자들에게 사과하고, 재발 방지 약속과 함께 구체적인 제도 개선안을 마련해야 합니다. 피해자 지원도 단순한 금전 보상을 넘어서는 성실한 조치여야 합니다.",
+      "현대차 울산공장 앞 폭력 사태는 인권과 노동권을 동시에 짓밟은 심각한 사건입니다. 현대차는 모든 폭력 사태를 부정하거나 은폐하려 하지 말고, 피해자들에게 진심 어린 사과를 하고, 책임자 징계와 재발 방지 대책을 마련해야 할 것입니다.",
+      "2025년 4월 19일 현대차 앞 평화 집회에서 발생한 폭력 진압은 기업 윤리를 심각히 훼손한 행위입니다. 현대차는 피해자들에게 사과하고 가해자에 대한 엄중한 징계와 함께, 노동권과 시민권 보장을 위한 근본적 개선을 약속해야 합니다.",
+      "현대차는 구사대와 경찰의 폭력 진압 책임을 무겁게 인식해야 합니다. 단순한 유감 표명으로는 부족합니다. 피해자들에게 진정성 있는 사과와 함께 구체적인 보상과 지원을 제공하고, 이번 사태에 대한 진상 조사 결과를 사회에 투명하게 공개해야 합니다.",
+      "구사대와 경찰이 노동자들을 폭력으로 제압한 현대차는 기업으로서 최소한의 양심도 저버린 것입니다. 현대차는 즉각 사과하고, 책임자를 처벌하며, 피해자 구제와 함께 재발 방지 대책을 구체적으로 마련하여 이행해야 합니다.",
+      "2025년 4월 19일 집회 진압 사태는 평화 집회를 짓밟은 명백한 범죄 행위입니다. 현대차는 피해자들에게 사과하고, 가해자 징계 및 피해 보상을 즉각 시행해야 합니다. 또한 재발 방지를 위한 구체적인 시스템을 마련하고 공개해야 합니다.",
+      "구사대와 경찰을 동원해 시민을 폭력적으로 진압한 현대차는 모든 책임을 인정해야 합니다. 기업으로서의 사회적 책임을 다하려면, 피해자들에게 사과하고 재발 방지를 위한 근본적인 제도 개혁을 즉각 실행해야 합니다.",
+      "현대차는 평화 집회를 폭력으로 막은 행위를 사죄하고, 피해자들에게 실질적인 보상을 제공해야 합니다. 가해자에 대한 엄정한 징계와 함께, 노동권 보호 및 시위 안전 보장을 위한 제도적 개선을 즉각 추진해야 할 것입니다.",
+      "2025년 4월 19일 현대차 울산공장 앞 폭력 사태는 반인권적 범죄입니다. 현대차는 피해자들에게 공식 사과하고, 전폭적인 보상 및 재발 방지 대책을 마련하여 이행해야 합니다. 이번 사태는 기업 윤리와 시민 신뢰를 파괴한 사례로 남을 것입니다.",
+      "구사대와 경찰의 집중 폭력은 현대차의 노동 탄압 의지를 보여준 사건입니다. 현대차는 이 사태에 대해 책임을 인정하고, 피해자들에게 사과와 보상을 시행하며, 모든 관계자들을 징계하고 재발 방지 대책을 수립해야 합니다.",
+      "2025년 4월 19일 현대차 울산공장 앞에서 발생한 폭력 진압 사태는 민주주의 근간을 위협한 사건입니다. 현대차는 피해자들에게 사과하고, 가해자들을 징계하며, 재발 방지를 위한 투명한 제도적 개선 방안을 제시하고 실행해야 합니다.",
+      "현대차는 평화롭게 시위하던 시민과 노동자를 폭력으로 제압한 책임을 결코 회피할 수 없습니다. 기업 윤리를 회복하려면 피해자들에게 진심으로 사과하고, 가해자 징계, 보상, 재발 방지 대책까지 전 과정을 투명하게 공개해야 합니다.",
+      "구사대와 경찰의 폭력 사태를 통해 현대차가 노동자 인권을 얼마나 경시했는지 명백히 드러났습니다. 현대차는 즉각 피해자들에게 사과하고, 가해자 처벌과 함께 재발 방지 대책을 실행하여 시민 신뢰를 회복해야 합니다.",
+      "2025년 4월 19일 현대차 울산공장 앞 평화 집회 폭력 진압 사태는 기업 윤리와 시민 신뢰를 심각히 훼손했습니다. 현대차는 사과와 보상, 가해자 처벌, 재발 방지를 위한 제도적 개선책을 신속히 마련하여 이행해야 합니다."
+
+    ];
+
+    // 🛑 영어 트윗 링크 배열 (직접 추가)
+    const tweets_en = [
+      "https://x.com/Hyundai_Global/status/1914099273018364299",
+      "https://x.com/Hyundai_Global/status/1912763073720471827",
+      "https://x.com/Hyundai_Global/status/1912496928492831204"
+    ];
+
+    // 🛑 영어 답글 문구 배열 (직접 추가)
+    const replyTexts_en = [
+      // "English reply example",
+      "Hyundai must take full responsibility for the brutal assault against peaceful protesters at Ulsan. No more silence or cover-ups. The victims deserve justice, and the public demands accountability. Apologize, compensate, and punish those responsible.",
+      "On April 19, 2025, Hyundai's hired thugs and police brutally attacked peaceful protesters. This cannot be forgotten or forgiven. Hyundai must issue a public apology, punish all responsible, and guarantee this will never happen again.",
+      "Workers and citizens were beaten and bloodied in front of Hyundai’s Ulsan plant. Human rights were crushed for profit and power. Hyundai must confront its crimes, apologize sincerely, and commit to structural reforms immediately.",
+      "Hyundai’s violence against peaceful demonstrators is a stain on its global reputation. An apology is not enough. Concrete action must be taken, including punishment for the perpetrators and guarantees of no recurrence.",
+      "Peaceful protesters faced brutality at Hyundai’s gates, and the world will not look away. Full accountability is non-negotiable. Justice, compensation, and structural change are the only acceptable responses. Anything less is betrayal.",
+      "Hyundai cannot erase the blood spilled on April 19 with silence or PR campaigns. True justice demands confession, public apology, reparations to the victims, and severe consequences for every person who enabled the violence.",
+      "April 19, 2025, marks a tragic day when Hyundai abandoned its ethical responsibility and allowed violence against workers and citizens. Words are not enough. Hyundai must apologize, compensate, and institutionalize protections for human rights.",
+      "Labor rights are human rights. Hyundai’s betrayal of both on April 19 cannot go unanswered. Only a full acknowledgment of wrongdoing, genuine reparations, and systemic reforms can begin to restore public trust in the company.",
+      "Hyundai’s refusal to confront the truth about the Ulsan violence is itself an act of aggression against human dignity. Immediate public apology, victim compensation, and a transparent investigation are the bare minimum requirements.",
+      "Brutality against peaceful protesters destroys any claim to corporate social responsibility. Hyundai must act decisively: punish those responsible, compensate the victims, and permanently safeguard workers’ and citizens' rights.",
+      "The violence unleashed at Hyundai’s Ulsan plant is not a misunderstanding—it is a crime. The victims deserve recognition, apology, and full reparation. Hyundai must guarantee the non-recurrence of such atrocities through genuine reforms.",
+      "Every second Hyundai stays silent, the stain on its reputation deepens. A corporation that profits from violence against workers and citizens is morally bankrupt. Apologize publicly, compensate fully, and reform deeply, Hyundai.",
+      "Peaceful protests are a fundamental right. Hyundai’s violent crackdown shows a horrifying disregard for human dignity. We demand full accountability, public apology, compensation for the victims, and sweeping structural reforms.",
+      "Hyundai must not mistake silence for consent. The international community is watching. Full accountability for the April 19 crackdown is essential: a sincere apology, real reparations, and systemic change to protect workers' rights.",
+      "No justice, no peace. Hyundai must publicly apologize, immediately compensate the victims of its violent crackdown, and take concrete steps to guarantee such brutality never again stains its operations.",
+      "The dignity of labor was shattered on April 19 at Hyundai’s Ulsan plant. Apologies are meaningless without action. Compensation, punishment, and reform must be immediate, complete, and transparent.",
+      "Workers who stood peacefully were met with batons and fists. Citizens who demanded rights were answered with violence. Hyundai must accept responsibility, apologize sincerely, and take bold steps to protect human dignity.",
+      "The true measure of a company is how it responds to injustice committed in its name. Hyundai, your response has been shameful. You must apologize, compensate the victims, punish the guilty, and reform your corporate practices.",
+      "Covering up violence only deepens the wound. Hyundai must face the truth: peaceful protesters were brutalized under its watch. Public apology, victim support, justice for the assaulted—all must happen without delay.",
+      "Workers bled at Hyundai's gates, but their voices cannot be silenced. We demand a sincere public apology, full compensation, and a commitment to protect the rights of all workers and citizens from now on.",
+      "Hyundai cannot market itself as a responsible global brand while brutally suppressing peaceful protest. Justice must prevail. Apologize fully, compensate the victims, and rebuild your credibility through real change.",
+      "The crimes committed on April 19 at Hyundai's Ulsan plant must be investigated publicly and punished severely. Apologies must be matched with real reparations and systemic reform to prevent further violence.",
+      "Hyundai's betrayal of human rights on April 19 demands global condemnation. True accountability requires immediate apology, reparations, and reforms. Silence and denial only deepen your shame.",
+      "Hyundai’s violent suppression of peaceful protest shows utter contempt for labor and human rights. Only genuine accountability, not PR spin, can begin to address this betrayal of trust.",
+      "Peaceful assembly is a right, not a privilege. Hyundai’s violence against workers is an attack on democracy itself. Apologize, compensate, and guarantee protections for all workers and citizens.",
+      "April 19 revealed Hyundai’s willingness to resort to brutal force rather than dialogue. Justice demands full acknowledgment of wrongdoing, victim compensation, punishment of perpetrators, and systemic change.",
+      "Hyundai’s moral failure on April 19 has global consequences. We demand truth, justice, and reform. Anything less is complicity in violence and a betrayal of basic human rights.",
+      "The blood spilled at Hyundai’s Ulsan plant cries out for justice. Apologies, reparations, and reforms are not optional—they are moral obligations Hyundai must fulfill immediately.",
+      "Workers’ dignity cannot be sacrificed for corporate convenience. Hyundai must publicly apologize, support the victims, punish the guilty, and guarantee such abuses will never happen again.",
+      "Hyundai’s violent repression of workers’ rights will not be forgotten. We demand immediate public accountability, reparations, and systemic reforms to guarantee respect for human dignity.",
+      "The cost of corporate irresponsibility is measured in human suffering. Hyundai must pay its debt: public apology, victim compensation, punishment of perpetrators, and sweeping reforms.",
+      "Hyundai’s actions on April 19 are not a mistake—they are a deliberate assault on fundamental rights. Justice must be swift, transparent, and comprehensive.",
+      "The cries of workers beaten at Hyundai’s gates will not be silenced by PR statements. We demand a real apology, real compensation, and real change now.",
+      "Every day Hyundai refuses to take responsibility, it deepens its guilt. Justice delayed is justice denied. Apologize, compensate, and change your practices now.",
+      "Hyundai’s silence in the face of violence makes it complicit in the crime. The time for apologies and reforms is now—not tomorrow, not someday—now.",
+      "Peaceful protest crushed by brutal force—this is Hyundai’s legacy unless it acts. Apologize publicly, compensate victims fully, and reform internally.",
+      "Hyundai, you cannot erase the images of brutality with silence. Justice demands transparency, accountability, and real restitution for the victims.",
+      "April 19 showed the world the true face of corporate violence. Hyundai must dismantle that image by choosing justice, not denial. Act now.",
+      "Labor rights must be defended, not destroyed. Hyundai must answer for its crimes: public apology, full compensation, punishment, and reform."
+
+    ];
+
+    const protestTexts = [
+    "2025년 4월 19일 울산공장 앞 평화집회에서 발생한 현대차 구사대 및 경찰 폭력 사태에 대해 항의합니다. 현대차는 즉각 공식 사과하고, 피해자 지원과 가해자 처벌, 재발 방지 대책을 마련하십시오.",
+    "현대차는 4월 19일 발생한 폭력 사태에 대해 전면 책임을 인정하고 피해자들에게 진심으로 사과해야 합니다. 또한 모든 관련자에 대한 엄정한 조치를 즉각 시행할 것을 요구합니다.",
+    "평화로운 시위를 폭력으로 진압한 현대차의 행동을 강력히 규탄합니다. 피해자들에게 사과하고, 가해자 처벌과 재발 방지 대책을 마련하십시오.",
+    "노동자와 시민에 대한 폭력은 용납할 수 없습니다. 현대차는 사과와 함께 책임자 처벌, 피해자 보상을 즉각 이행해야 합니다.",
+    "4월 19일 집회에서 벌어진 폭력 사태에 대해 현대차는 명확히 사과하고, 피해자 지원과 재발 방지 대책을 책임 있게 마련해야 합니다."
+    // 필요하면 문구 더 추가 가능
+  ];  
+
+    function copyReplyText() {
+      const isKorean = Math.random() < 0.5; // 50% 확률
+      let currentReply = "";
+      let currentTweet = "";
+
+
+
+      if (isKorean) {
+        if (replyTexts_ko.length === 0 || tweets_ko.length === 0) {
+          alert("⚠️ 한국어 답글이나 트윗 목록이 비어 있습니다. 추가해 주세요.");
+          return;
+        }
+        currentReply = replyTexts_ko[Math.floor(Math.random() * replyTexts_ko.length)];
+        currentTweet = tweets_ko[Math.floor(Math.random() * tweets_ko.length)];
+      } else {
+        if (replyTexts_en.length === 0 || tweets_en.length === 0) {
+          alert("⚠️ 영어 답글이나 트윗 목록이 비어 있습니다. 추가해 주세요.");
+          return;
+        }
+        currentReply = replyTexts_en[Math.floor(Math.random() * replyTexts_en.length)];
+        currentTweet = tweets_en[Math.floor(Math.random() * tweets_en.length)];
+      }
+
+      navigator.clipboard.writeText(currentReply)
+        .then(() => {
+          alert('✏️ 답글 문구가 복사되었습니다!\n이제 트윗을 열어 붙여넣으세요.');
+          window.open(currentTweet, '_blank');
+        })
+        .catch(err => {
+          alert('복사 실패: ' + err);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const protestBox = document.getElementById('protestContent');
+    if (protestBox) {
+      if (protestTexts.length > 0) {
+        const randomProtest = protestTexts[Math.floor(Math.random() * protestTexts.length)];
+        protestBox.value = randomProtest;
+      } else {
+        protestBox.value = "";
+      }
+    }
+  });
+  </script>
 </body>
 </html>
